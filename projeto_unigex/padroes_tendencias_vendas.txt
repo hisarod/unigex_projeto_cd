@@ -1,0 +1,37 @@
+Para explorar os dados em busca de comportamentos recorrentes, relações e tendências, podemos analisar alguns aspectos do pré-processamento realizado:
+
+Início dos Dados:
+
+
+Total de registros originais: 10.418.
+
+Não há registros com valores nulos nas colunas críticas.
+
+Características Temporais:
+
+Foram extraídas características temporais como dia da semana, mês e trimestre, que podem revelar padrões sazonais nas vendas.
+
+Média Móvel:
+
+A média móvel de 3 meses por produto pode mostrar tendências de demanda ao longo do tempo.
+
+Distribuição de Vendas (Análise Descritiva):
+
+Normalização Min-Max: As vendas normalizadas indicam que a maioria dos valores de total, custo_medio, valor_desconto e media_movel_3meses estão concentrados em uma faixa menor do que o valor máximo.
+
+Padronização StandardScaler: Valores padronizados permitem identificar outliers, com alguns casos extremos demonstrando grande variação.
+
+Divisão Treino/Teste:
+
+Utiliza shuffle=False, importante para séries temporais, preservando a sequência temporal.
+
+Codificação Categórica:
+
+Conversão de variáveis categóricas para numéricas, permitindo sua utilização em modelos de machine learning.
+
+Metadados:
+
+Inclui informações como o projeto e a data do processamento, útil para rastreamento e reprodutibilidade.
+
+Para aprofundar a análise, é interessante explorar visualmente os dados, como criar gráficos de linha para ver tendências ao longo do tempo, ou histogramas para a distribuição das vendas. Ferramentas como matplotlib ou seaborn podem ser usadas para essa visualização.
+

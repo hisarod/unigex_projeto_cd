@@ -1,0 +1,39 @@
+1. Identificacao de padroes padronizado_categorias.ipynb
+
+# Count the number of occurrences for each description category
+description_counts = df_original['descricao'].value_counts()
+print("Frequência de cada categoria de descrição:")
+print(description_counts)
+
+# Correlation matrix for one-hot encoded data
+correlation_matrix = df_processed.corr()
+
+# Display correlation with specific category
+print("Correlação entre variáveis one-hot:")
+print(correlation_matrix.filter(like='desc_', axis=0).filter(like='desc_', axis=1))
+
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+# Aplicar PCA
+pca = PCA(n_components=2)
+principal_components = pca.fit_transform(df_processed)
+
+# Visualização
+plt.figure(figsize=(10, 7))
+plt.scatter(principal_components[:, 0], principal_components[:, 1], alpha=0.5)
+plt.title('PCA das Variáveis One-Hot Codificadas')
+plt.xlabel('PC 1')
+plt.ylabel('PC 2')
+plt.show()
+
+from sklearn.cluster import KMeans
+
+# Aplicar K-Means
+kmeans = KMeans(n_clusters=5, random_state=42)
+df_processed['cluster'] = kmeans.fit_predict(df_processed)
+
+# Analisar agrupamentos
+clusters_analysis = df_processed.groupby('cluster').mean()
+print("Análise dos agrupamentos:")
+print(clusters_analysis)
